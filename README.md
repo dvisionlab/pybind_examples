@@ -3,7 +3,7 @@
 - get pybind11 from github and clone it into pybind_test directory
 - cd into pybind11 and run python setup.py install
 
-- Standard example (src folder)
+### Standard example (src folder)
 - create a build folder and cd into it
 - ccmake ../src
 - set USE_PYTHON_INCLUDE_DIR ON
