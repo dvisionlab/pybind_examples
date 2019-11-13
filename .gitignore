@@ -7,6 +7,9 @@ build_vmtk
 #################
 pybind11
 
+# Python environment
+venv
+
 # OS generated files #
 ######################
 .DS_Store
