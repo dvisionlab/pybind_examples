@@ -2,6 +2,7 @@
 #################
 build
 build_vmtk
+build_vmtk_only
 
 # pybind folder #
 #################

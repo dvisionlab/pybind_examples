@@ -1,8 +1,6 @@
-#include <pybind11/pybind11.h>
 
 #include "vtkPolyData.h"
 #include "vtkSTLReader.h"
-#include "vtkvmtkPolyDataKiteRemovalFilter.h"
 #include "vtkvmtkPolyDataCenterlines.h"
 #include "vtkSmartPointer.h"
 
@@ -10,10 +8,9 @@
 void readSTL(std::string filepath) {
   vtkSTLReader* reader = vtkSTLReader::New();
   vtkPolyData* polyData = vtkPolyData::New();
+  vtkvmtkPolyDataCenterlines* centerlineFilter = vtkvmtkPolyDataCenterlines::New();
+  centerlineFilter->Delete();
   
-  vtkSmartPointer<vtkvmtkPolyDataCenterlines> kiteRemoval = vtkSmartPointer<vtkvmtkPolyDataCenterlines>::New();
-  // vtkSmartPointer<vtkvmtkPolyDataKiteRemovalFilter> kiteRemoval = vtkSmartPointer<vtkvmtkPolyDataKiteRemovalFilter>::New();
-
   reader->SetFileName(filepath.c_str());
   reader->Update();
   polyData->DeepCopy(reader->GetOutput());
@@ -22,8 +19,6 @@ void readSTL(std::string filepath) {
   polyData->Delete();
 }
 
-// define a module to be imported by python
-PYBIND11_MODULE(foo_vmtk, m) {
-  // export the readSTL method
-  m.def("readSTL", &readSTL, "Read and STL file", "filepath");
+int main (int argc, char* argv[]) {
+  readSTL("/home/daron1337/Desktop/foo.stl");
 }
