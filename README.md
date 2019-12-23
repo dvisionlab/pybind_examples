@@ -49,11 +49,12 @@ The module `foo` should be now present:
     $ cd vmtk-build
     $ ccmake ../vmtk
 
-Then do the following:
+Then do the following (toggle `t` for advanced mode):
 
 - set `BUILD_SHARED_LIBS OFF`
 - set `VTK_VMTK_WRAP_PYTHON OFF`
 - set `CMAKE_BUILD_TYPE Release`
+- set `CMAKE_CXX_FLAGS -std=gnu++11 -fpic`
 
 Then configure with `c` and generate by pressing `g` and build:
 
